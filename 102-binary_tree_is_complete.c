@@ -10,30 +10,30 @@
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	int is_last_level = 0;
-    binary_tree_t *queue[1024];
-    int front = 0, rear = 0;
+	binary_tree_t *queue[1024];
+	int front = 0, rear = 0;
 
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    queue[rear++] = (binary_tree_t *)tree;
+	queue[rear++] = (binary_tree_t *)tree;
 
-    while (front < rear)
-    {
-        const binary_tree_t *current = queue[front++];
+	while (front < rear)
+	{
+		const binary_tree_t *current = queue[front++];
 
-        if (current == NULL)
-            is_last_level = 1;
-        else
-        {
-            if (is_last_level)
-                return (0);
+		if (current == NULL)
+			is_last_level = 1;
+		else
+		{
+			if (is_last_level)
+				return (0);
 
-            queue[rear++] = current->left;
-            queue[rear++] = current->right;
-        }
-    }
+			queue[rear++] = current->left;
+			queue[rear++] = current->right;
+		}
+	}
 
-    return (1);
+	return (1);
 }
 
